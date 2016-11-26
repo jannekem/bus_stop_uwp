@@ -23,7 +23,7 @@ namespace bus_stop
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        int MAX_BLINKS = 10;
+        int MAX_BLINKS = 20;
 
         Uri homePage;
         DispatcherTimer timer = new DispatcherTimer();
@@ -73,7 +73,7 @@ namespace bus_stop
         {
             if(stopBus && blink_counter < MAX_BLINKS)
             {
-                blinker_rect.Visibility = Visibility.Visible;
+                blinker_Grid.Visibility = Visibility.Visible;
                 if (blink_counter % 2 == 0)
                 {
                     blinker_rect.Fill = new SolidColorBrush(Windows.UI.Colors.Blue);
@@ -86,7 +86,7 @@ namespace bus_stop
             }
             else
             {
-                blinker_rect.Visibility = Visibility.Collapsed;
+                blinker_Grid.Visibility = Visibility.Collapsed;
                 blink_counter = 0;
                 stopBus = false;
             }
