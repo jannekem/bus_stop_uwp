@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="1080" Height="1920">
-    <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled">
+    <ScrollViewer x:Name="scroll_viewer" HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RenderTransformOrigin="0.5,0.5" Width="1080" Height="1920">
             <Grid HorizontalAlignment="Left" Height="1910" VerticalAlignment="Top" Width="1080">
                 <Grid Height="599" VerticalAlignment="Top">
@@ -16,7 +16,7 @@
                 </Grid>
                 <Button x:Name="button" Content="Departures" HorizontalAlignment="Left" Margin="62,639,0,0" VerticalAlignment="Top" Height="97" Width="196" Click="button_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
                 <TimePicker HorizontalAlignment="Left" Margin="62,750,0,0" VerticalAlignment="Top"/>
-                <WebView HorizontalAlignment="Left" Height="182" Margin="742,600,0,0" VerticalAlignment="Top" Width="338"/>
+                <WebView x:Name="weather_webview" HorizontalAlignment="Left" Height="182" Margin="593,600,0,0" VerticalAlignment="Top" Width="487"/>
                 <Button x:Name="button_Stop" Content="Stop the bus!" HorizontalAlignment="Left" Margin="62,827,0,0" VerticalAlignment="Top" Height="211" Width="196" Click="button_Stop_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
                 <Grid x:Name="blinker_Grid" Visibility="Collapsed">
                     <Rectangle x:Name="blinker_rect" Fill="Red" Margin="0" Stroke="Black"/>

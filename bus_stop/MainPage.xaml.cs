@@ -26,8 +26,10 @@ namespace bus_stop
         int MAX_BLINKS = 20;
 
         Uri homePage;
+        Uri weatherPage;
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer blink_timer = new DispatcherTimer();
+        DispatcherTimer weather_update_timer = new DispatcherTimer();
 
         bool stopBus = false;
         int blink_counter = 0;
@@ -40,6 +42,7 @@ namespace bus_stop
         {
             this.InitializeComponent();
             this.homePage = new Uri("https://beta.reittiopas.fi/pysakit/HSL:1130111");
+            this.weatherPage = new Uri("http://busstopofthefuture.azurewebsites.net/get_weather.html");
             map_view_progress.IsActive = true;
             map_view.Navigate(homePage);
 
@@ -50,6 +53,11 @@ namespace bus_stop
             blink_timer.Interval = TimeSpan.FromSeconds(0.2);
             blink_timer.Tick += blinker_Tick;
             blink_timer.Start();
+
+            weather_webview.Navigate(this.weatherPage);
+
+            Window.Current.SizeChanged += Current_SizeChanged;
+            update_scroll_viewer();
 
         }
 
@@ -63,6 +71,16 @@ namespace bus_stop
 
         }
 
+        private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
+        {
+            update_scroll_viewer();
+        }
+
+        private void update_scroll_viewer()
+        {
+            scroll_viewer.Height = Window.Current.Bounds.Height;
+            scroll_viewer.Width = Window.Current.Bounds.Width;
+        }
 
         void timer_Tick(object sender, object e)
         {
