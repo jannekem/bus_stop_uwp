@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.ViewManagement;
+using Windows.Devices.Geolocation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -48,6 +50,9 @@ namespace bus_stop
             weatherPage = new Uri("http://busstopofthefuture.azurewebsites.net/get_weather.html");
             map_view_progress.IsActive = true;
             map_view.Navigate(departuresPage);
+            map_view.PermissionRequested += map_view_PermissionRequested;
+            
+            
 
             timer.Interval = TimeSpan.FromSeconds(0.1);
             timer.Tick += timer_Tick;
@@ -69,6 +74,11 @@ namespace bus_stop
            
         }
 
+        private void map_view_PermissionRequested(WebView sender, WebViewPermissionRequestedEventArgs args)
+        {
+            args.PermissionRequest.Allow();
+        }
+
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -79,6 +89,8 @@ namespace bus_stop
             var advert = new BitmapImage((new Uri("ms-appx:///Assets/blackfriday.png")));
             ad_image.Source = advert;
             ad_image.Stretch = Stretch.UniformToFill;
+
+            var accessStatus = Geolocator.RequestAccessAsync();
 
         }
 
@@ -134,6 +146,7 @@ namespace bus_stop
         private void button_Click(object sender, RoutedEventArgs e)
         {
             map_view.Navigate(departuresPage);
+            ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
         }
 
         private async void button_Stop_Click(object sender, RoutedEventArgs e)

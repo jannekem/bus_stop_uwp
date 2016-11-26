@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>1AED9D2EB0D20C7574E0E10EAB6857D5994C98FA6CB0D4EC34D3A5B6AC39A2BB</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C0DCBC6E6694446B47CDFEECB5C05E2273A294AD0CF7C611F3938E9875FEE288</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>27cf4245-32a9-47c9-98d7-471a5677083c_1.0.0.0_x86__8mdbb2ke0qv62</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>27cf4245-32a9-47c9-98d7-471a5677083c_8mdbb2ke0qv62!App</RegisteredUserModeAppID>
     <RegisteredPackageID>27cf4245-32a9-47c9-98d7-471a5677083c</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\janne\Documents\Visual Studio 2015\Projects\bus_stop\bus_stop\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-26T21:48:51.030</Modified>
+      <Modified>2016-11-26T23:25:47.826</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\janne\Documents\Visual Studio 2015\Projects\bus_stop\bus_stop\bin\x86\Debug\bus_stop.exe">
       <PackagePath>entrypoint\bus_stop.exe</PackagePath>
-      <Modified>2016-11-26T21:48:50.404</Modified>
+      <Modified>2016-11-26T23:25:47.544</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\janne\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -505,11 +505,11 @@
     <AppxPackagedFile Include="C:\Users\janne\Documents\Visual Studio 2015\Projects\bus_stop\bus_stop\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-26T21:48:50.841</Modified>
+      <Modified>2016-11-26T23:19:22.886</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\janne\Documents\Visual Studio 2015\Projects\bus_stop\bus_stop\bin\x86\Debug\Core\bus_stop.exe">
       <PackagePath>bus_stop.exe</PackagePath>
-      <Modified>2016-11-26T21:48:51.025</Modified>
+      <Modified>2016-11-26T23:25:47.821</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
