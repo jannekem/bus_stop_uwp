@@ -108,6 +108,7 @@
     <None Include="bus_stop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\blackfriday.png" />
     <Content Include="Assets\siren.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

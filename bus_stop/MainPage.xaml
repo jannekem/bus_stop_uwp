@@ -10,14 +10,15 @@
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RenderTransformOrigin="0.5,0.5" Width="1080" Height="1920">
             <Grid HorizontalAlignment="Left" Height="1910" VerticalAlignment="Top" Width="1080">
                 <Grid Height="599" VerticalAlignment="Top">
-                    <WebView x:Name="map_view" LoadCompleted="WebView_LoadCompleted"/>
+                    <WebView x:Name="map_view" LoadCompleted="WebView_LoadCompleted" Height="600"/>
                     <ProgressRing x:Name="map_view_progress" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Height="100" Width="100"/>
                     <TextBlock x:Name="clock_text" HorizontalAlignment="Left" Margin="229,7,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Height="50" Width="135" Foreground="White" FontSize="30"/>
                 </Grid>
-                <Button x:Name="button" Content="Departures" HorizontalAlignment="Left" Margin="62,639,0,0" VerticalAlignment="Top" Height="97" Width="196" Click="button_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
-                <TimePicker HorizontalAlignment="Left" Margin="62,750,0,0" VerticalAlignment="Top"/>
-                <WebView x:Name="weather_webview" HorizontalAlignment="Left" Height="182" Margin="593,600,0,0" VerticalAlignment="Top" Width="487"/>
-                <Button x:Name="button_Stop" Content="Stop the bus!" HorizontalAlignment="Left" Margin="62,827,0,0" VerticalAlignment="Top" Height="211" Width="196" Click="button_Stop_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
+                <Button x:Name="button_departures" Content="Departures" HorizontalAlignment="Left" Margin="0,599,0,0" VerticalAlignment="Top" Height="180" Width="196" Click="button_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
+                <WebView x:Name="weather_webview" HorizontalAlignment="Left" Height="180" Margin="588,599,0,0" VerticalAlignment="Top" Width="492"/>
+                <Button x:Name="button_Stop" Content="Stop the bus!" HorizontalAlignment="Left" Margin="392,599,0,0" VerticalAlignment="Top" Height="180" Width="196" Click="button_Stop_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
+                <Button x:Name="button_near_you" Content="Near you" HorizontalAlignment="Left" Margin="196,599,0,0" VerticalAlignment="Top" Height="180" Width="196" Click="button_near_you_Click" Background="#FF007AC9" Foreground="White" FontSize="30"/>
+                <Image x:Name="ad_image" HorizontalAlignment="Left" Margin="0,780,0,0" Width="1080"/>
                 <Grid x:Name="blinker_Grid" Visibility="Collapsed">
                     <Rectangle x:Name="blinker_rect" Fill="Red" Margin="0" Stroke="Black"/>
                     <TextBlock x:Name="stopBlock" TextWrapping="Wrap" Text="STOP" FontSize="250" Foreground="White" TextAlignment="Center" Margin="0,572,0,0"/>

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,7 +26,8 @@ namespace bus_stop
     {
         int MAX_BLINKS = 20;
 
-        Uri homePage;
+        Uri departuresPage;
+        Uri nearYouPage;
         Uri weatherPage;
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer blink_timer = new DispatcherTimer();
@@ -41,10 +43,11 @@ namespace bus_stop
         public MainPage()
         {
             this.InitializeComponent();
-            this.homePage = new Uri("https://beta.reittiopas.fi/pysakit/HSL:1130111");
-            this.weatherPage = new Uri("http://busstopofthefuture.azurewebsites.net/get_weather.html");
+            departuresPage = new Uri("https://beta.reittiopas.fi/pysakit/HSL:1130111");
+            nearYouPage = new Uri("https://beta.reittiopas.fi/lahellasi");
+            weatherPage = new Uri("http://busstopofthefuture.azurewebsites.net/get_weather.html");
             map_view_progress.IsActive = true;
-            map_view.Navigate(homePage);
+            map_view.Navigate(departuresPage);
 
             timer.Interval = TimeSpan.FromSeconds(0.1);
             timer.Tick += timer_Tick;
@@ -54,11 +57,16 @@ namespace bus_stop
             blink_timer.Tick += blinker_Tick;
             blink_timer.Start();
 
+            
             weather_webview.Navigate(this.weatherPage);
+            weather_update_timer.Interval = TimeSpan.FromMinutes(5);
+            weather_update_timer.Tick += weather_update_Tick;
+            weather_update_timer.Start();
 
             Window.Current.SizeChanged += Current_SizeChanged;
             update_scroll_viewer();
 
+           
         }
 
 
@@ -66,8 +74,11 @@ namespace bus_stop
         {
             base.OnNavigatedTo(e);
             var audio_siren = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/siren.mp3"));
-            
             await _player.LoadFileAsync(audio_siren);
+
+            var advert = new BitmapImage((new Uri("ms-appx:///Assets/blackfriday.png")));
+            ad_image.Source = advert;
+            ad_image.Stretch = Stretch.UniformToFill;
 
         }
 
@@ -110,6 +121,11 @@ namespace bus_stop
             }
         }
 
+        void weather_update_Tick(object sender, object e)
+        {
+            weather_webview.Navigate(this.weatherPage);
+        }
+
         private void WebView_LoadCompleted(object sender, NavigationEventArgs e)
         {
             map_view_progress.IsActive = false;
@@ -117,13 +133,18 @@ namespace bus_stop
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            map_view.Navigate(this.homePage);
+            map_view.Navigate(departuresPage);
         }
 
         private async void button_Stop_Click(object sender, RoutedEventArgs e)
         {
             stopBus = true;
             _player.Play("siren.mp3", 1);
+        }
+
+        private void button_near_you_Click(object sender, RoutedEventArgs e)
+        {
+            map_view.Navigate(nearYouPage);
         }
     }
 }
