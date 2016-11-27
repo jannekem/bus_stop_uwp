@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body style='background-color: rgb(0, 122, 201); height: 100%; overflow: hidden'>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 100; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <p id='text' style='font-family:Verdana; font-size: 200%; color: white; text-align: center'></p>
+    <script>
+        function httpGet()
+        {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", 'http://api.openweathermap.org/data/2.5/forecast?id=658225&appid=3d75acc7a3a6c30667b2daf8dcb11db1', false); // false for synchronous request
+            xmlHttp.send();
+            if (xmlHttp.status != 200)
+            {
+                alert(xmlHttp.status + xmlHttp.statusText)
+            }
+            var xml = JSON.parse(xmlHttp.responseText);
+            temperature = xml.list[0].main.temp;
+            type = xml.list[0].weather[0].main;
+            $("#text").html("Weather in Helsinki:<br>" + Math.round(temperature - 273.15, -2) + " &deg;C, " + type.toLowerCase());
+        }
+        window.onload = httpGet;
+    </script>
+  </body>
+</html>
